@@ -33,7 +33,6 @@ public class PlacementService {
                     placement.setCompanyName(updatedPlacement.getCompanyName());
                     placement.setJobRole(updatedPlacement.getJobRole());
                     placement.setDriveDate(updatedPlacement.getDriveDate());
-                    placement.setCollege(updatedPlacement.getCollege());
                     return placementRepository.save(placement);
                 }).orElseThrow(() -> new RuntimeException("Placement not found"));
     }
