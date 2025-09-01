@@ -2,7 +2,9 @@ package com.tnsif.placementmanagement.controller;
 
 import com.tnsif.placementmanagement.entity.Placement;
 import com.tnsif.placementmanagement.service.PlacementService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -27,12 +29,12 @@ public class PlacementController {
     }
 
     @PostMapping
-    public Placement createPlacement(@RequestBody Placement placement) {
+    public Placement createPlacement(@Valid @RequestBody Placement placement) {
         return placementService.createPlacement(placement);
     }
 
     @PutMapping("/{id}")
-    public Placement updatePlacement(@PathVariable Long id, @RequestBody Placement placement) {
+    public Placement updatePlacement(@PathVariable Long id, @Valid @RequestBody Placement placement) {
         return placementService.updatePlacement(id, placement);
     }
 

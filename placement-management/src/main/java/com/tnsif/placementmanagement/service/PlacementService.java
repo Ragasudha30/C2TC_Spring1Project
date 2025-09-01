@@ -3,6 +3,7 @@ package com.tnsif.placementmanagement.service;
 import com.tnsif.placementmanagement.entity.Placement;
 import com.tnsif.placementmanagement.repository.PlacementRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -27,17 +28,23 @@ public class PlacementService {
         return placementRepository.save(placement);
     }
 
-    public Placement updatePlacement(Long id, Placement updatedPlacement) {
-        return placementRepository.findById(id)
-                .map(placement -> {
-                    placement.setCompanyName(updatedPlacement.getCompanyName());
-                    placement.setJobRole(updatedPlacement.getJobRole());
-                    placement.setDriveDate(updatedPlacement.getDriveDate());
-                    return placementRepository.save(placement);
-                }).orElseThrow(() -> new RuntimeException("Placement not found"));
+    public Placement updatePlacement(Long id, Placement placementDetails) {
+        Placement placement = placementRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Placement not found"));
+
+        placement.setStudentName(placementDetails.getStudentName());
+        placement.setCompanyName(placementDetails.getCompanyName());
+        placement.setRole(placementDetails.getRole());
+        placement.setPackageOffered(placementDetails.getPackageOffered());
+        placement.setPlacementDate(placementDetails.getPlacementDate());
+        placement.setLocation(placementDetails.getLocation());
+        placement.setContactEmail(placementDetails.getContactEmail());
+
+        return placementRepository.save(placement);
     }
 
     public void deletePlacement(Long id) {
         placementRepository.deleteById(id);
     }
 }
+

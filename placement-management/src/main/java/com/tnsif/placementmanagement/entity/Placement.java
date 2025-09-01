@@ -1,37 +1,47 @@
 package com.tnsif.placementmanagement.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "placements")
 public class Placement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String studentName;
     private String companyName;
-    private String jobRole;
-    private String driveDate;
+    private String role;
+    private double packageOffered;
+    private String placementDate;
+    private String location;
+    private String contactEmail;
 
-    public Placement() {}
-
-    public Placement(String companyName, String jobRole, String driveDate) {
-        this.companyName = companyName;
-        this.jobRole = jobRole;
-        this.driveDate = driveDate;
-    }
-
-    // Getters & Setters
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
+    public String getStudentName() { return studentName; }
+    public void setStudentName(String studentName) { this.studentName = studentName; }
 
     public String getCompanyName() { return companyName; }
     public void setCompanyName(String companyName) { this.companyName = companyName; }
 
-    public String getJobRole() { return jobRole; }
-    public void setJobRole(String jobRole) { this.jobRole = jobRole; }
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 
-    public String getDriveDate() { return driveDate; }
-    public void setDriveDate(String driveDate) { this.driveDate = driveDate; }
+    public double getPackageOffered() { return packageOffered; }
+    public void setPackageOffered(double packageOffered) { this.packageOffered = packageOffered; }
+
+    public String getPlacementDate() { return placementDate; }
+    public void setPlacementDate(String placementDate) { this.placementDate = placementDate; }
+
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+
+    public String getContactEmail() { return contactEmail; }
+    public void setContactEmail(String contactEmail) { this.contactEmail = contactEmail; }
 }
